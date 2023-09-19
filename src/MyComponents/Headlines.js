@@ -63,7 +63,7 @@ export default class Headlines extends Component {
   render() {
     return (
       <>
-        <div className="container" style={{ width: "100%" }}>
+        <div className="container my-3" style={{ width: "100%" }}>
           <h2>
             Latest headlines on{" "}
             {this.capitilizeFirstLetter(this.props.category)}

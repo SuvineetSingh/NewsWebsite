@@ -4,19 +4,27 @@ import Headlines from "./MyComponents/Headlines";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
+import HomePage from "./MyComponents/HomePage";
 
 export default class App extends Component {
   state = {
-    progress:0
-  }
-  setProgress = (progress) =>{
-    this.setState({progress:progress});
-  }
+    progress: 0,
+    searchResults: [],
+  };
+  setProgress = (progress) => {
+    this.setState({ progress: progress });
+  };
+  setSearchResults = (results) => {
+    this.setState({ searchResults: results })
+  };
+  
   render() {
     return (
       <div>
         <Router>
-          <Navbar />
+          <Navbar 
+            setSearchResults={this.setSearchResults}
+          />
           <LoadingBar
             height={3}
             color="#f11946"
@@ -27,12 +35,19 @@ export default class App extends Component {
               exact
               path="/"
               element={
+                <HomePage key="general" country="us" category="general" />
+              }
+            />
+            <Route
+              exact
+              path="/general"
+              element={
                 <Headlines
                   key="general"
                   pageSize={10}
                   country="us"
                   category="general"
-                  setProgress= {this.setProgress}
+                  setProgress={this.setProgress}
                 />
               }
             />
@@ -45,7 +60,7 @@ export default class App extends Component {
                   pageSize={10}
                   country="us"
                   category="business"
-                  setProgress= {this.setProgress}
+                  setProgress={this.setProgress}
                 />
               }
             />
@@ -58,7 +73,7 @@ export default class App extends Component {
                   pageSize={10}
                   country="us"
                   category="entertainment"
-                  setProgress= {this.setProgress}
+                  setProgress={this.setProgress}
                 />
               }
             />
@@ -71,7 +86,7 @@ export default class App extends Component {
                   pageSize={5}
                   country="us"
                   category="health"
-                  setProgress= {this.setProgress}
+                  setProgress={this.setProgress}
                 />
               }
             />
@@ -84,7 +99,7 @@ export default class App extends Component {
                   pageSize={5}
                   country="us"
                   category="sports"
-                  setProgress= {this.setProgress}
+                  setProgress={this.setProgress}
                 />
               }
             />
@@ -97,7 +112,7 @@ export default class App extends Component {
                   pageSize={5}
                   country="us"
                   category="technology"
-                  setProgress= {this.setProgress}
+                  setProgress={this.setProgress}
                 />
               }
             />
@@ -110,7 +125,7 @@ export default class App extends Component {
                   pageSize={5}
                   country="us"
                   category="science"
-                  setProgress= {this.setProgress}
+                  setProgress={this.setProgress}
                 />
               }
             />
