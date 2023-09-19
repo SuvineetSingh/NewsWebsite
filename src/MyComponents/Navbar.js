@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
 // import SearchList from "./SearchList"
 
 export default function Navbar({ setSearchResults }) {
@@ -11,6 +10,7 @@ export default function Navbar({ setSearchResults }) {
     let data = await fetch(url);
     let parsedData = await data.json();
     setArticles(parsedData.articles);
+
     const results = articles.filter((article) => {
       return (
         value &&

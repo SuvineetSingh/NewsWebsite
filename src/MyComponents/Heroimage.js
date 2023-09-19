@@ -1,11 +1,18 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import PropTypes from "prop-types";
-import Button from 'react-bootstrap/Button';
 
 
 export default function Heroimage(props) {
   const { articles } = props;
+  const imageStyle = {
+    filter: "brightness(60%)", // Make the image darker (70% brightness)
+    height:"700px"
+  };
+  const titleStyle = {
+    color: "white",
+    
+  };
   return (
     <>
       <Carousel>
@@ -15,12 +22,13 @@ export default function Heroimage(props) {
               className="d-block w-100"
               src={article.urlToImage}
               alt={article.title}
-              style={{ height: "700px"}}
+              style={imageStyle}
             />
             <Carousel.Caption>
-              <h3>{article.title}</h3>
+              <a href={article.url} target="_blank" rel="noopener noreferrer">
+                <h3 style={titleStyle}>{article.title}</h3>
+              </a>
               <p>{article.description}</p>
-              <Button href={article.url} target="_blank" rel="noopener noreferrer" variant="dark">Read More</Button>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
